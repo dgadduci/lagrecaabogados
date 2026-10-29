@@ -1,6 +1,6 @@
 ## 1. Base técnica
 
-- [ ] 1.1 Install Astro and required development dependencies, commit the npm lockfile, and verify `npm ci` completes on the documented Node version.
+- [x] 1.1 Install Astro and required development dependencies, commit the npm lockfile, and verify `npm ci` completes on the documented Node version.
 - [x] 1.2 Configure strict TypeScript, static Astro output, shared CSS tokens, and the base document layout; verify `npm run check` and `npm run build` complete.
 - [x] 1.3 Create shared institutional configuration for the confirmed name, address, Instagram, optional `SITE_URL`, and unconfigured contact values; verify missing domain and phone values produce no fabricated public URLs.
 
