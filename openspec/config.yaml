@@ -1,0 +1,38 @@
+schema: spec-driven
+
+context: |
+  Project: LA GRECA & ASOC. - ESTUDIO JURÍDICO, Argentina. Public brand: La Greca Abogados.
+  Audience: individuals, merchants, SMEs, and medium-sized companies. Institutional trajectory: more than 55 years; do not invent dates or milestones.
+  Confirmed address: Chilavert 6714, Piso 1 - Local 27, Villa Lugano, Ciudad Autónoma de Buenos Aires, Argentina.
+  Confirmed Instagram: https://www.instagram.com/lagrecaabogados/. Phone, email, and production domain are unconfirmed; never invent them.
+  Services: civil, labor, commercial, business, and family law; probate/succession, damages, contracts, rentals, debt collection, corporate conflicts, and ongoing business counsel. No criminal or pension law.
+  Stack: Astro static output, strict TypeScript, CSS, minimal client JavaScript, Git, Cloudflare Pages. No backend, database, auth, WordPress, or paid service without approval.
+  Legal copy must be reviewed by the attorneys before publication. Never promise outcomes, invent law/cases/testimonials/credentials, or present general information as individualized advice.
+  Functional changes follow EXPLORAR -> PROPONER -> REVISAR -> IMPLEMENTAR -> VERIFICAR -> ARCHIVAR. Do not apply a proposal before explicit user approval.
+
+rules:
+  proposal:
+    - Keep confirmed institutional facts distinct from pending configuration.
+    - State the business outcomes, scope, capabilities, and exclusions clearly.
+    - A proposal is not authorization to implement; wait for explicit user approval.
+  specs:
+    - Define observable behavior in Spanish and use testable WHEN/THEN scenarios.
+    - Include only confirmed institutional information and exclude criminal and pension law.
+    - Legal content must carry attorney review before publication and must not guarantee outcomes.
+  design:
+    - Prefer static Astro pages, native CSS, accessible HTML, and minimal JavaScript.
+    - Do not add paid services, backend services, or UI frameworks without an approved rationale.
+  tasks:
+    - Include a verification method in every task.
+    - Keep content and contact configuration tasks dependent on confirmed facts and professional review.
+
+operations:
+  apply:
+    guidance:
+      - Confirm explicit user approval of the proposal before implementation.
+      - Follow the approved tasks; do not invent missing contact data, people, legal claims, prices, or credentials.
+      - Run applicable Astro, TypeScript, build, link, accessibility, and responsive checks; report checks blocked by unavailable dependencies.
+  archive:
+    guidance:
+      - Archive only after implementation tasks are complete, validation succeeds, and the user has approved the result.
+      - Never mark unfinished or unverified work as complete.

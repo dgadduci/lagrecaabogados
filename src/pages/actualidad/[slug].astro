@@ -1,0 +1,43 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { getImage, Image } from 'astro:assets';
+import { isPublishableArticle } from '../../config/editorial';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+interface Props {
+  entry: CollectionEntry<'actualidad'>;
+}
+
+export async function getStaticPaths() {
+  const articles = (await getCollection('actualidad')).filter(isPublishableArticle);
+  return articles.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const socialImage = entry.data.image
+  ? (await getImage({ src: entry.data.image, width: 1200, format: 'webp' })).src
+  : undefined;
+---
+
+<SiteLayout title={entry.data.seoTitle} description={entry.data.seoDescription} type="article" image={socialImage}>
+  <article class="article-page">
+    <header class="page-hero page-hero--cream">
+      <div class="container page-hero__inner article-page__header">
+        <nav class="breadcrumbs" aria-label="Ruta de navegación">
+          <a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/actualidad/">Actualidad</a><span aria-hidden="true">/</span><span aria-current="page">{entry.data.title}</span>
+        </nav>
+        <p class="eyebrow">{entry.data.category}</p>
+        <h1>{entry.data.title}</h1>
+        <p>{entry.data.description}</p>
+        {entry.data.author && <p class="article-page__byline">Por {entry.data.author} · <time datetime={entry.data.publishedAt.toISOString()}>{entry.data.publishedAt.toLocaleDateString('es-AR', { dateStyle: 'long' })}</time></p>}
+      </div>
+    </header>
+    {entry.data.image && <Image class="article-page__image" src={entry.data.image} alt={entry.data.imageAlt ?? ''} loading="eager" />}
+    <div class="container article-page__content prose-column">
+      <Content />
+      <p class="article-page__disclaimer">La información de este artículo es general y no reemplaza el asesoramiento profesional individualizado.</p>
+      <a class="text-link" href="/actualidad/">← Volver a Actualidad</a>
+    </div>
+  </article>
+</SiteLayout>

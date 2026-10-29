@@ -1,0 +1,54 @@
+---
+import { siteConfig } from '../config/site';
+
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/estudio/', label: 'El estudio' },
+  { href: '/particulares/', label: 'Particulares' },
+  { href: '/empresas/', label: 'Empresas' },
+  { href: '/actualidad/', label: 'Actualidad' },
+  { href: '/contacto/', label: 'Contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+const isCurrent = (href: string) => currentPath === href || (href !== '/' && currentPath.startsWith(href));
+---
+
+<a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a class="wordmark" href="/" aria-label="La Greca & Asoc., ir al inicio">
+      <span class="wordmark__name">LA GRECA <span>&amp; ASOC.</span></span>
+      <span class="wordmark__descriptor">ESTUDIO JURÍDICO</span>
+    </a>
+
+    <nav class="desktop-navigation" aria-label="Navegación principal">
+      <ul>
+        {links.map((link) => (
+          <li>
+            <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>
+          </li>
+        ))}
+      </ul>
+      <a class="header-social" href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label={`Instagram de ${siteConfig.brandName} (abre en una pestaña nueva)`}>
+        Instagram
+      </a>
+      <a class="button button--primary button--small" href="/contacto/">Contacto</a>
+    </nav>
+
+    <details class="mobile-navigation">
+      <summary>Menú</summary>
+      <nav aria-label="Navegación móvil">
+        <ul>
+          {links.map((link) => (
+            <li>
+              <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>
+            </li>
+          ))}
+          <li><a href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a class="mobile-navigation__contact" href="/contacto/">Solicitar una consulta</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

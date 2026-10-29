@@ -1,0 +1,48 @@
+---
+import { businessServices, individualServices } from '../data/services';
+import { siteConfig } from '../config/site';
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__identity">
+      <a class="wordmark wordmark--footer" href="/" aria-label="La Greca & Asoc., ir al inicio">
+        <span class="wordmark__name">LA GRECA <span>&amp; ASOC.</span></span>
+        <span class="wordmark__descriptor">ESTUDIO JURÍDICO</span>
+      </a>
+      <p>Asesoramiento y representación jurídica para particulares y empresas.</p>
+      <address>{siteConfig.address.formatted}</address>
+    </div>
+
+    <nav aria-label="Servicios para particulares">
+      <h2>Particulares</h2>
+      <ul>
+        {individualServices.map((service) => (
+          <li><a href={`/particulares/${service.slug}/`}>{service.title}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav aria-label="Servicios para empresas">
+      <h2>Empresas</h2>
+      <ul>
+        {businessServices.map((service) => (
+          <li><a href={`/empresas/${service.slug}/`}>{service.title}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="site-footer__contact">
+      <h2>Contacto</h2>
+      <ul>
+        <li><a href="/contacto/">Dirección y ubicación</a></li>
+        <li><a href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="/actualidad/">Actualidad jurídica</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>© {new Date().getFullYear()} {siteConfig.name} Todos los derechos reservados.</p>
+    <p>La información general del sitio no reemplaza el asesoramiento profesional individualizado.</p>
+  </div>
+</footer>

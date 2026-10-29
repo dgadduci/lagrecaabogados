@@ -1,0 +1,59 @@
+---
+import ReviewNotice from '../../components/ReviewNotice.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { businessServices } from '../../data/services';
+---
+
+<SiteLayout
+  title="Asesoramiento jurídico para empresas"
+  description="Asesoramiento jurídico permanente mediante abonos mensuales para pymes y empresas medianas en CABA. Derecho laboral, contratos comerciales y cobro de créditos."
+>
+  <section class="page-hero page-hero--burgundy">
+    <div class="container page-hero__inner">
+      <p class="eyebrow eyebrow--light">Servicios para empresas</p>
+      <h1>Asesoramiento jurídico para anticipar y gestionar desafíos</h1>
+      <p>Asesoramiento jurídico permanente para pymes y empresas medianas, con enfoque preventivo y representación cuando corresponde.</p>
+      <a class="button button--light" href="/contacto/">Conversar sobre asesoramiento empresarial</a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container business-overview">
+      <div class="business-overview__intro">
+        <p class="eyebrow">Acompañamiento continuo</p>
+        <h2>Asesoramiento jurídico permanente mediante abonos mensuales</h2>
+        <p>El estudio trabaja con empresas que contratan asesoramiento continuo. La modalidad, el alcance y los honorarios se conversan según las necesidades de cada organización.</p>
+        <ul class="check-list">
+          <li>Asesoramiento preventivo y prevención de conflictos</li>
+          <li>Derecho laboral empresarial</li>
+          <li>Contratos comerciales y asesoramiento societario</li>
+          <li>Recuperación de créditos y representación judicial</li>
+        </ul>
+        <a class="button button--primary" href="/empresas/asesoramiento-permanente/">Conocer el asesoramiento permanente</a>
+      </div>
+      <div class="business-overview__note">
+        <span class="business-overview__index">01</span>
+        <p>Una relación de asesoramiento sostenida ayuda a consultar antes de que una situación se convierta en un conflicto mayor.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section section-services" aria-labelledby="business-services-heading">
+    <div class="container">
+      <div class="section-heading">
+        <div><p class="eyebrow">Áreas para empresas</p><h2 id="business-services-heading">Servicios jurídicos empresariales</h2></div>
+      </div>
+      <ReviewNotice />
+      <div class="service-grid service-grid--two">
+        {businessServices.map((service) => (
+          <ServiceCard href={`/empresas/${service.slug}/`} title={service.title} description={service.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section section-cta">
+    <div class="container section-cta__inner">
+      <div><p class="eyebrow eyebrow--light">Próximo paso</p><h2>Conversemos sobre las necesidades jurídicas de tu empresa</h2></div>
+      <a class="button button--light" href="/contacto/">Contactar al estudio</a>
+    </div>
+  </section>
+</SiteLayout>

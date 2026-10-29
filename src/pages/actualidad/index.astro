@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { isPublishableArticle } from '../../config/editorial';
+
+const articles = (await getCollection('actualidad'))
+  .filter(isPublishableArticle)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+
+<SiteLayout
+  title="Actualidad jurídica"
+  description="Artículos y novedades jurídicas preparados por La Greca & Asoc. y revisados por profesionales del estudio."
+>
+  <section class="page-hero page-hero--cream">
+    <div class="container page-hero__inner">
+      <p class="eyebrow">Actualidad</p>
+      <h1>Información jurídica para estar al día</h1>
+      <p>Artículos generales del estudio sobre temas jurídicos de interés para particulares y empresas.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      {articles.length ? (
+        <div class="article-grid">
+          {articles.map((article) => (
+            <article class="article-card">
+              <p class="eyebrow">{article.data.category} · <time datetime={article.data.publishedAt.toISOString()}>{article.data.publishedAt.toLocaleDateString('es-AR', { dateStyle: 'long' })}</time></p>
+              <h2><a href={`/actualidad/${article.id}/`}>{article.data.title}</a></h2>
+              <p>{article.data.description}</p>
+              <p class="article-card__author">Por {article.data.author}</p>
+              <a class="text-link" href={`/actualidad/${article.id}/`} aria-label={`Leer ${article.data.title}`}>Leer artículo <span aria-hidden="true">→</span></a>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <p class="eyebrow">Próximamente</p>
+          <h2>Estamos preparando los primeros artículos</h2>
+          <p>Esta sección se actualizará con contenidos jurídicos revisados por el estudio. No publicamos artículos de ejemplo ni borradores sin revisión.</p>
+          <a class="button button--primary" href="/contacto/">Contactar al estudio</a>
+        </div>
+      )}
+    </div>
+  </section>
+</SiteLayout>

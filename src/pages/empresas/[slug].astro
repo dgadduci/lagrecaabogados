@@ -1,0 +1,54 @@
+---
+import ReviewNotice from '../../components/ReviewNotice.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { businessServices } from '../../data/services';
+
+interface Props {
+  service: (typeof businessServices)[number];
+}
+
+export function getStaticPaths() {
+  return businessServices.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<SiteLayout title={service.title} description={service.description}>
+  <section class="page-hero page-hero--burgundy">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumbs breadcrumbs--light" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/empresas/">Empresas</a><span aria-hidden="true">/</span><span aria-current="page">{service.title}</span>
+      </nav>
+      <p class="eyebrow eyebrow--light">Servicios para empresas</p>
+      <h1>{service.title}</h1>
+      <p>{service.description}</p>
+      <a class="button button--light" href="/contacto/">Conversar sobre este servicio</a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container service-detail">
+      <div class="service-detail__main">
+        <ReviewNotice />
+        <h2>Asesoramiento para la actividad de tu empresa</h2>
+        <p>{service.introduction}</p>
+        <p>El alcance del servicio y su modalidad se definen a partir de una conversación con la empresa. El estudio no publica tarifas ni promete resultados judiciales.</p>
+        <h2>Alcances de consulta</h2>
+        <ul class="check-list">
+          {service.focus.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <aside class="service-detail__aside">
+        <p class="eyebrow">La Greca &amp; Asoc.</p>
+        <h2>Asesoramiento y representación</h2>
+        <p>Más de 55 años de trayectoria acompañando a particulares y empresas.</p>
+        <a class="button button--primary" href="/contacto/">Contactar al estudio</a>
+        <WhatsAppButton text="Consultar por WhatsApp" variant="secondary" />
+      </aside>
+    </div>
+  </section>
+</SiteLayout>

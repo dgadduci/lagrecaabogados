@@ -1,0 +1,19 @@
+---
+type Props = {
+  href: string;
+  title: string;
+  description: string;
+  eyebrow?: string;
+};
+
+const { href, title, description, eyebrow } = Astro.props;
+---
+
+<article class="service-card">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h3><a href={href}>{title}</a></h3>
+  <p>{description}</p>
+  <a class="text-link" href={href} aria-label={`Conocer más sobre ${title}`}>
+    Conocer el servicio <span aria-hidden="true">→</span>
+  </a>
+</article>

@@ -1,0 +1,45 @@
+---
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { siteConfig } from '../config/site';
+
+const mapUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(siteConfig.address.formatted)}`;
+---
+
+<SiteLayout
+  title="Contacto y ubicación"
+  description="Contactá a La Greca & Asoc. y encontrá su estudio jurídico en Chilavert 6714, Villa Lugano, Ciudad Autónoma de Buenos Aires."
+>
+  <section class="page-hero page-hero--cream">
+    <div class="container page-hero__inner">
+      <p class="eyebrow">Contacto</p>
+      <h1>Hablemos sobre tu consulta</h1>
+      <p>La Greca &amp; Asoc. brinda asesoramiento jurídico a particulares y empresas.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container contact-grid">
+      <article class="contact-card contact-card--address">
+        <p class="eyebrow">Dirección</p>
+        <h2>Visitá el estudio</h2>
+        <address>{siteConfig.address.streetAddress}<br />{siteConfig.address.neighborhood}<br />{siteConfig.address.locality}<br />{siteConfig.address.country}</address>
+        <a class="text-link" href={mapUrl} target="_blank" rel="noopener noreferrer" aria-label="Abrir la dirección del estudio en OpenStreetMap (abre en una pestaña nueva)">
+          Abrir ubicación en el mapa <span aria-hidden="true">↗</span>
+        </a>
+      </article>
+      <article class="contact-card contact-card--action">
+        <p class="eyebrow">Consultas</p>
+        <h2>Contactá al estudio</h2>
+        <p>Podés escribirnos a través de los canales disponibles o consultar por Instagram.</p>
+        <WhatsAppButton text="Solicitar una consulta por WhatsApp" variant="primary" />
+        <a class="button button--outline" href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram de La Greca Abogados</a>
+      </article>
+    </div>
+  </section>
+  <section class="section section-contact-band">
+    <div class="container section-contact-band__inner">
+      <div><p class="eyebrow eyebrow--light">La Greca &amp; Asoc.</p><h2>Más de 55 años de trayectoria</h2></div>
+      <a class="button button--light" href="/estudio/">Conocer el estudio</a>
+    </div>
+  </section>
+</SiteLayout>

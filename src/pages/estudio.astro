@@ -1,0 +1,40 @@
+---
+import ReviewNotice from '../components/ReviewNotice.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { siteConfig } from '../config/site';
+---
+
+<SiteLayout
+  title="El estudio"
+  description="Conocé La Greca & Asoc., estudio jurídico con más de 55 años de trayectoria en Villa Lugano, Ciudad Autónoma de Buenos Aires."
+>
+  <section class="page-hero page-hero--cream">
+    <div class="container page-hero__inner">
+      <p class="eyebrow">LA GRECA &amp; ASOC. · ESTUDIO JURÍDICO</p>
+      <h1>Una trayectoria al servicio de las personas y las empresas</h1>
+      <p>Más de 55 años de experiencia acompañando consultas jurídicas en Villa Lugano y en la Ciudad Autónoma de Buenos Aires.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container prose-column">
+      <ReviewNotice />
+      <p class="eyebrow">Nuestra forma de trabajo</p>
+      <h2>Atención profesional y cercana</h2>
+      <p>La Greca &amp; Asoc. es un estudio jurídico argentino que brinda asesoramiento y representación a particulares, comerciantes, pymes y empresas medianas.</p>
+      <p>El estudio aborda asuntos civiles, laborales, comerciales, empresariales y de familia, además de sucesiones, daños y perjuicios, contratos, alquileres, cobro de créditos y conflictos societarios.</p>
+      <p>Cada consulta se considera según sus circunstancias. El alcance del asesoramiento se define luego de conocer la situación y la documentación disponible.</p>
+      <p>La trayectoria del estudio supera los 55 años. Esta presentación no asigna fechas de fundación ni relata hitos institucionales que no fueron confirmados.</p>
+      <a class="button button--primary" href="/contacto/">Solicitar una consulta</a>
+    </div>
+  </section>
+  <section class="section section-contact-band">
+    <div class="container section-contact-band__inner">
+      <div>
+        <p class="eyebrow eyebrow--light">Encontranos</p>
+        <h2>Chilavert 6714, Villa Lugano</h2>
+      </div>
+      <p>{siteConfig.address.formatted}</p>
+      <a class="button button--light" href="/contacto/">Información de contacto</a>
+    </div>
+  </section>
+</SiteLayout>

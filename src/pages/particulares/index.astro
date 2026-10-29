@@ -1,0 +1,30 @@
+---
+import ReviewNotice from '../../components/ReviewNotice.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { individualServices } from '../../data/services';
+---
+
+<SiteLayout
+  title="Servicios jurídicos para particulares"
+  description="Asesoramiento jurídico para particulares en derecho civil, laboral, familia, sucesiones, daños, contratos y alquileres en Villa Lugano y CABA."
+>
+  <section class="page-hero page-hero--cream">
+    <div class="container page-hero__inner">
+      <p class="eyebrow">Servicios para particulares</p>
+      <h1>Asesoramiento jurídico para tu situación</h1>
+      <p>Atención en sucesiones, familia, derecho laboral, daños y perjuicios, contratos, alquileres y otras consultas civiles.</p>
+      <a class="button button--primary" href="/contacto/">Solicitar una consulta</a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <ReviewNotice />
+      <div class="service-grid service-grid--three">
+        {individualServices.map((service) => (
+          <ServiceCard href={`/particulares/${service.slug}/`} title={service.title} description={service.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>

@@ -1,0 +1,34 @@
+---
+import { whatsappConfig } from '../config/contact';
+
+type Props = {
+  text?: string;
+  variant?: 'primary' | 'secondary' | 'floating';
+  message?: string;
+};
+
+const {
+  text = 'Solicitar una consulta por WhatsApp',
+  variant = 'primary',
+  message = whatsappConfig.defaultMessage,
+} = Astro.props;
+
+const number = whatsappConfig.phoneNumber.replace(/\D/g, '');
+const href = number
+  ? `https://wa.me/${number}?text=${encodeURIComponent(message)}`
+  : undefined;
+const buttonClass = `whatsapp-button whatsapp-button--${variant}`;
+---
+
+{href ? (
+  <a class={buttonClass} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${text} (abre en una pestaña nueva)`}>
+    {text}
+  </a>
+) : (
+  <>
+    <button class={buttonClass} type="button" disabled aria-describedby={import.meta.env.DEV ? 'whatsapp-pending' : undefined}>
+      {text}
+    </button>
+    {import.meta.env.DEV && <span class="whatsapp-pending" id="whatsapp-pending">WhatsApp pendiente de configuración para desarrollo.</span>}
+  </>
+)}
