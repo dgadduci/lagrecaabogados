@@ -1,8 +1,5 @@
-/**
- * Configure this value only after the firm confirms its real WhatsApp number.
- * Use the international digits without spaces or punctuation.
- */
+/** Confirmed WhatsApp number in international digits, without spaces or punctuation. */
 export const whatsappConfig = {
-  phoneNumber: '',
+  phoneNumber: '5491156977905',
   defaultMessage: 'Hola, quisiera solicitar una consulta.',
 } as const;

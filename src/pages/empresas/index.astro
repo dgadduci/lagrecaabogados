@@ -1,8 +1,16 @@
 ---
-import ReviewNotice from '../../components/ReviewNotice.astro';
+import { getEntry, render } from 'astro:content';
 import ServiceCard from '../../components/ServiceCard.astro';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import { businessServices } from '../../data/services';
+
+const businessOverviewCopy = await getEntry('websiteCopy', 'business-overview');
+
+if (!businessOverviewCopy) {
+  throw new Error('No se encontró el contenido editorial de presentación empresarial.');
+}
+
+const { Content: BusinessOverviewCopy } = await render(businessOverviewCopy);
 ---
 
 <SiteLayout
@@ -18,23 +26,13 @@ import { businessServices } from '../../data/services';
     </div>
   </section>
   <section class="section">
-    <div class="container business-overview">
-      <div class="business-overview__intro">
-        <p class="eyebrow">Acompañamiento continuo</p>
-        <h2>Asesoramiento jurídico permanente mediante abonos mensuales</h2>
-        <p>El estudio trabaja con empresas que contratan asesoramiento continuo. La modalidad, el alcance y los honorarios se conversan según las necesidades de cada organización.</p>
-        <ul class="check-list">
-          <li>Asesoramiento preventivo y prevención de conflictos</li>
-          <li>Derecho laboral empresarial</li>
-          <li>Contratos comerciales y asesoramiento societario</li>
-          <li>Recuperación de créditos y representación judicial</li>
-        </ul>
-        <a class="button button--primary" href="/empresas/asesoramiento-permanente/">Conocer el asesoramiento permanente</a>
+    <div class="container business-copy">
+      <p class="eyebrow">Acompañamiento continuo</p>
+      <h2>{businessOverviewCopy.data.title}</h2>
+      <div class="website-copy website-copy--business">
+        <BusinessOverviewCopy />
       </div>
-      <div class="business-overview__note">
-        <span class="business-overview__index">01</span>
-        <p>Una relación de asesoramiento sostenida ayuda a consultar antes de que una situación se convierta en un conflicto mayor.</p>
-      </div>
+      <a class="button button--primary" href="/empresas/asesoramiento-permanente/">Conocer el asesoramiento permanente</a>
     </div>
   </section>
   <section class="section section-services" aria-labelledby="business-services-heading">
@@ -42,7 +40,6 @@ import { businessServices } from '../../data/services';
       <div class="section-heading">
         <div><p class="eyebrow">Áreas para empresas</p><h2 id="business-services-heading">Servicios jurídicos empresariales</h2></div>
       </div>
-      <ReviewNotice />
       <div class="service-grid service-grid--two">
         {businessServices.map((service) => (
           <ServiceCard href={`/empresas/${service.slug}/`} title={service.title} description={service.description} />

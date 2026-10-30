@@ -1,10 +1,19 @@
 ---
-import ReviewNotice from '../components/ReviewNotice.astro';
+import { getEntry, render } from 'astro:content';
+import BrandLogo from '../components/BrandLogo.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { siteConfig } from '../config/site';
 import { featuredIndividualServices } from '../data/services';
+
+const homeServicesCopy = await getEntry('websiteCopy', 'home-services');
+
+if (!homeServicesCopy) {
+  throw new Error('No se encontró el contenido editorial de la portada.');
+}
+
+const { Content: HomeServicesCopy } = await render(homeServicesCopy);
 ---
 
 <SiteLayout
@@ -22,11 +31,8 @@ import { featuredIndividualServices } from '../data/services';
           <a class="button button--outline" href="/estudio/">Conocer el estudio</a>
         </div>
       </div>
-      <div class="home-hero__mark" aria-hidden="true">
-        <span>LA GRECA</span>
-        <span>&amp; ASOC.</span>
-        <i></i>
-        <small>ESTUDIO JURÍDICO</small>
+      <div class="home-hero__logo" aria-hidden="true">
+        <BrandLogo variant="hero" alt="" loading="eager" />
       </div>
     </div>
     <div class="home-hero__rule" aria-hidden="true"></div>
@@ -51,11 +57,13 @@ import { featuredIndividualServices } from '../data/services';
       <div class="section-heading">
         <div>
           <p class="eyebrow">Áreas de práctica</p>
-          <h2 id="services-heading">Asesoramiento para cada etapa</h2>
+          <h2 id="services-heading">{homeServicesCopy.data.title}</h2>
         </div>
         <a class="text-link" href="/particulares/">Ver servicios para particulares <span aria-hidden="true">→</span></a>
       </div>
-      <ReviewNotice />
+      <div class="website-copy website-copy--home">
+        <HomeServicesCopy />
+      </div>
       <div class="service-grid">
         {featuredIndividualServices.map((service) => (
           <ServiceCard href={`/particulares/${service.slug}/`} title={service.title} description={service.description} />

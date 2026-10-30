@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/branding/logo-la-greca.png';
+
+type Variant = 'header' | 'footer' | 'hero';
+
+type Props = {
+  variant: Variant;
+  alt: string;
+  loading?: 'eager' | 'lazy';
+};
+
+const outputSizes: Record<Variant, number> = {
+  header: 160,
+  footer: 224,
+  hero: 736,
+};
+
+const { variant, alt, loading = variant === 'footer' ? 'lazy' : 'eager' } = Astro.props;
+const size = outputSizes[variant];
+---
+
+<Image
+  class={`brand-logo brand-logo--${variant}`}
+  src={logo}
+  alt={alt}
+  width={size}
+  height={size}
+  format="webp"
+  quality={95}
+  loading={loading}
+  decoding="async"
+/>

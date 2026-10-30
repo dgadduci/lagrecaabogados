@@ -1,5 +1,5 @@
 ---
-import ReviewNotice from '../../components/ReviewNotice.astro';
+import { getEntry, render } from 'astro:content';
 import ServiceCard from '../../components/ServiceCard.astro';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
 import SiteLayout from '../../layouts/SiteLayout.astro';
@@ -18,6 +18,13 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 const relatedServices = individualServices.filter((item) => item.slug !== service.slug).slice(0, 3);
+const copy = await getEntry('websiteCopy', service.copyId);
+
+if (!copy) {
+  throw new Error(`No se encontró el contenido editorial ${service.copyId}.`);
+}
+
+const { Content: ServiceCopy } = await render(copy);
 ---
 
 <SiteLayout title={service.title} description={service.description}>
@@ -35,14 +42,9 @@ const relatedServices = individualServices.filter((item) => item.slug !== servic
   <section class="section">
     <div class="container service-detail">
       <div class="service-detail__main">
-        <ReviewNotice />
-        <h2>Asesoramiento según cada caso</h2>
-        <p>{service.introduction}</p>
-        <p>El alcance de una consulta depende de las circunstancias particulares y de la documentación que pueda revisarse. La información de esta página es general y no reemplaza el asesoramiento profesional individualizado.</p>
-        <h2>Temas de consulta</h2>
-        <ul class="check-list">
-          {service.focus.map((item) => <li>{item}</li>)}
-        </ul>
+        <div class="website-copy website-copy--service">
+          <ServiceCopy />
+        </div>
       </div>
       <aside class="service-detail__aside">
         <p class="eyebrow">¿Querés conversar con el estudio?</p>

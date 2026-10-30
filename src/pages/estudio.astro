@@ -1,7 +1,15 @@
 ---
-import ReviewNotice from '../components/ReviewNotice.astro';
+import { getEntry, render } from 'astro:content';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { siteConfig } from '../config/site';
+
+const studyCopy = await getEntry('websiteCopy', 'study');
+
+if (!studyCopy) {
+  throw new Error('No se encontró el contenido editorial de presentación del estudio.');
+}
+
+const { Content: StudyCopy } = await render(studyCopy);
 ---
 
 <SiteLayout
@@ -17,13 +25,11 @@ import { siteConfig } from '../config/site';
   </section>
   <section class="section">
     <div class="container prose-column">
-      <ReviewNotice />
       <p class="eyebrow">Nuestra forma de trabajo</p>
-      <h2>Atención profesional y cercana</h2>
-      <p>La Greca &amp; Asoc. es un estudio jurídico argentino que brinda asesoramiento y representación a particulares, comerciantes, pymes y empresas medianas.</p>
-      <p>El estudio aborda asuntos civiles, laborales, comerciales, empresariales y de familia, además de sucesiones, daños y perjuicios, contratos, alquileres, cobro de créditos y conflictos societarios.</p>
-      <p>Cada consulta se considera según sus circunstancias. El alcance del asesoramiento se define luego de conocer la situación y la documentación disponible.</p>
-      <p>La trayectoria del estudio supera los 55 años. Esta presentación no asigna fechas de fundación ni relata hitos institucionales que no fueron confirmados.</p>
+      <h2>{studyCopy.data.title}</h2>
+      <div class="website-copy website-copy--study">
+        <StudyCopy />
+      </div>
       <a class="button button--primary" href="/contacto/">Solicitar una consulta</a>
     </div>
   </section>

@@ -24,4 +24,27 @@ const actualidad = defineCollection({
       }),
 });
 
-export const collections = { actualidad };
+const websiteCopy = defineCollection({
+  loader: glob({ base: './src/content/website-copy', pattern: '**/*.md' }),
+  schema: z.object({
+    pageKey: z.enum([
+      'home-services',
+      'study',
+      'individual-civil',
+      'individual-labor',
+      'individual-family',
+      'individual-succession',
+      'individual-damages',
+      'individual-contracts-rentals',
+      'business-overview',
+      'business-permanent',
+      'business-labor',
+      'business-commercial-contracts',
+      'business-credit-collection',
+    ]),
+    title: z.string().trim().min(3),
+    reviewStatus: z.enum(['pending', 'approved']),
+  }),
+});
+
+export const collections = { actualidad, websiteCopy };

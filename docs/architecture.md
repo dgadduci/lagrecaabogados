@@ -2,7 +2,7 @@
 
 ## Estado actual
 
-La propuesta OpenSpec `initial-institutional-website` está aprobada. El sitio implementa las rutas institucionales y de servicios, navegación compartida, contenido editorial con revisión y metadatos SEO previstos por sus especificaciones. El teléfono, el correo, el dominio y las fotografías reales autorizadas siguen pendientes; los textos de servicios se muestran como borradores sujetos a revisión profesional. La estructura técnica prioriza generación estática y Astro.
+La propuesta OpenSpec `initial-institutional-website` está aprobada. El sitio implementa las rutas institucionales y de servicios, navegación compartida, contenido editorial con revisión y metadatos SEO previstos por sus especificaciones. El número de WhatsApp está confirmado y centralizado; el teléfono para llamadas, el correo, el dominio y las fotografías reales autorizadas siguen pendientes. Los textos de servicios se muestran como borradores sujetos a revisión profesional. La estructura técnica prioriza generación estática y Astro.
 
 ## Decisiones base
 
@@ -11,7 +11,7 @@ La propuesta OpenSpec `initial-institutional-website` está aprobada. El sitio i
 - **CSS nativo:** usa variables y estilos propios sin incorporar un framework visual.
 - **Contenido editorial:** se organizará con Astro Content Collections al implementar la sección Actualidad, con esquemas de datos para título, fecha, autor confirmado, categoría, descripción, imagen opcional y metadatos SEO.
 - **Sin backend:** no se prevén base de datos, autenticación, formularios con procesamiento propio ni funciones de servidor.
-- **Contacto:** teléfono y correo se agregarán solo después de recibir datos confirmados. El destino y mensaje de WhatsApp se configurarán desde un único módulo.
+- **Contacto:** el número de WhatsApp confirmado y el mensaje inicial se centralizan en `src/config/contact.ts`. El teléfono para llamadas y el correo solo se agregarán después de recibir datos confirmados.
 
 ## Mapa de código
 

@@ -1,5 +1,4 @@
 ---
-import ReviewNotice from '../../components/ReviewNotice.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import { individualServices } from '../../data/services';
@@ -19,7 +18,6 @@ import { individualServices } from '../../data/services';
   </section>
   <section class="section">
     <div class="container">
-      <ReviewNotice />
       <div class="service-grid service-grid--three">
         {individualServices.map((service) => (
           <ServiceCard href={`/particulares/${service.slug}/`} title={service.title} description={service.description} />

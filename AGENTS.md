@@ -78,7 +78,8 @@ Sitio institucional de **LA GRECA & ASOC. – ESTUDIO JURÍDICO**, estudio argen
 - No inventar ni citar legislación o jurisprudencia sin verificar vigencia y pertinencia.
 - No prometer resultados ni formular afirmaciones absolutas cuando haya excepciones relevantes.
 - Aclarar que el contenido general no reemplaza el asesoramiento profesional individualizado.
-- Toda página o artículo jurídico debe quedar identificado como pendiente de revisión profesional antes de publicación.
+- El estado de revisión jurídica debe registrarse internamente como `pending` hasta que los abogados confirmen su revisión; no desplegar contenido jurídico antes de esa confirmación.
+- No mostrar al visitante el panel genérico «Revisión profesional pendiente» salvo que el usuario lo solicite expresamente. Mantener la aclaración general de que el sitio no reemplaza el asesoramiento profesional individualizado.
 - No ofrecer derecho penal ni previsional: el estudio no presta esos servicios.
 
 ## L. OpenSpec obligatorio

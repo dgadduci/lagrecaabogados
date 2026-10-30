@@ -3,7 +3,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { siteConfig } from '../config/site';
 
-const mapUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(siteConfig.address.formatted)}`;
+const mapUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(siteConfig.mapSearchQuery)}`;
 ---
 
 <SiteLayout
