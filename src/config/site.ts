@@ -4,6 +4,7 @@ export const siteConfig = {
   description:
     'Asesoramiento y representación jurídica para particulares y empresas en Villa Lugano, Ciudad Autónoma de Buenos Aires.',
   brandName: 'La Greca Abogados',
+  email: 'contacto@lagrecaabogados.com.ar',
   mapSearchQuery: 'Martiniano Chilavert 6714, Ciudad Autonoma de Buenos Aires, Argentina',
   address: {
     streetAddress: 'Chilavert 6714, Piso 1 - Local 27',

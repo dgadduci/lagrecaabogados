@@ -32,6 +32,7 @@ const mapUrl = `https://www.openstreetmap.org/search?query=${encodeURIComponent(
         <h2>Contactá al estudio</h2>
         <p>Podés escribirnos a través de los canales disponibles o consultar por Instagram.</p>
         <WhatsAppButton text="Solicitar una consulta por WhatsApp" variant="primary" />
+        <a class="button button--outline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
         <a class="button button--outline" href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram de La Greca Abogados</a>
       </article>
     </div>

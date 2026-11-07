@@ -2,7 +2,7 @@
 
 ## Estado actual
 
-La propuesta OpenSpec `initial-institutional-website` está aprobada. El sitio implementa las rutas institucionales y de servicios, navegación compartida, contenido editorial con revisión y metadatos SEO previstos por sus especificaciones. El número de WhatsApp está confirmado y centralizado; el teléfono para llamadas, el correo, el dominio y las fotografías reales autorizadas siguen pendientes. Los textos de servicios se muestran como borradores sujetos a revisión profesional. La estructura técnica prioriza generación estática y Astro.
+La propuesta OpenSpec `initial-institutional-website` está aprobada. El sitio implementa las rutas institucionales y de servicios, navegación compartida, contenido editorial con revisión y metadatos SEO previstos por sus especificaciones. El número de WhatsApp, el correo institucional y los dominios están confirmados; el teléfono para llamadas y las fotografías reales autorizadas siguen pendientes. Los textos de servicios tienen `reviewStatus: approved`. La estructura técnica prioriza generación estática y Astro.
 
 ## Decisiones base
 
@@ -11,7 +11,7 @@ La propuesta OpenSpec `initial-institutional-website` está aprobada. El sitio i
 - **CSS nativo:** usa variables y estilos propios sin incorporar un framework visual.
 - **Contenido editorial:** se organizará con Astro Content Collections al implementar la sección Actualidad, con esquemas de datos para título, fecha, autor confirmado, categoría, descripción, imagen opcional y metadatos SEO.
 - **Sin backend:** no se prevén base de datos, autenticación, formularios con procesamiento propio ni funciones de servidor.
-- **Contacto:** el número de WhatsApp confirmado y el mensaje inicial se centralizan en `src/config/contact.ts`. El teléfono para llamadas y el correo solo se agregarán después de recibir datos confirmados.
+- **Contacto:** el número de WhatsApp y su mensaje inicial se centralizan en `src/config/contact.ts`; el correo confirmado se centraliza en `src/config/site.ts`. El teléfono para llamadas permanece sin confirmar.
 
 ## Mapa de código
 

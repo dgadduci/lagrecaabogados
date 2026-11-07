@@ -2,7 +2,7 @@
 
 Proyecto institucional para el estudio jurídico argentino La Greca & Asoc. El sitio está pensado para presentar sus servicios a particulares y empresas, con especial foco en el asesoramiento jurídico permanente a pymes y empresas medianas.
 
-> **Estado:** `initial-institutional-website` está aprobado y su implementación pasó las verificaciones locales de Astro y enlaces. Los textos jurídicos fueron aprobados por el estudio y registrados con `reviewStatus: approved`. El repositorio GitHub `dgadduci/lagrecaabogados` ya existe, pero todavía no está conectado a este checkout; no hay despliegue público.
+> **Estado:** `initial-institutional-website` está aprobado y su implementación pasó las verificaciones locales de Astro y enlaces. Los textos jurídicos fueron aprobados por el estudio y registrados con `reviewStatus: approved`. El repositorio GitHub `dgadduci/lagrecaabogados` está conectado a este checkout y Cloudflare Pages publica el sitio en `https://www.lagrecaabogados.com.ar`.
 
 ## Requisitos
 
@@ -62,4 +62,4 @@ Comandos habituales de OpenSpec dependen de la versión instalada. Consultar `op
 
 ## Contacto y datos institucionales
 
-Dirección informada: Chilavert 6714, Piso 1 - Local 27, Villa Lugano, Ciudad Autónoma de Buenos Aires, Argentina. Instagram: [@lagrecaabogados](https://www.instagram.com/lagrecaabogados/). WhatsApp confirmado: `5491156977905`. Dominios confirmados: `lagrecaabogados.com.ar` y `lagrecaabogados.com`. Host canónico: `www.lagrecaabogados.com.ar`; los demás hosts deben redirigir allí. El teléfono para llamadas y el correo no fueron confirmados; no deben inventarse ni sustituirse por datos de ejemplo.
+Dirección informada: Chilavert 6714, Piso 1 - Local 27, Villa Lugano, Ciudad Autónoma de Buenos Aires, Argentina. Instagram: [@lagrecaabogados](https://www.instagram.com/lagrecaabogados/). WhatsApp confirmado: `5491156977905`. Correo institucional confirmado: `contacto@lagrecaabogados.com.ar`. Dominios confirmados: `lagrecaabogados.com.ar` y `lagrecaabogados.com`. Host canónico: `www.lagrecaabogados.com.ar`; los demás hosts redirigen allí. El teléfono para llamadas sigue sin confirmarse.

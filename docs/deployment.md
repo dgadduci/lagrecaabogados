@@ -1,6 +1,13 @@
 # Despliegue en Cloudflare Pages
 
-El sitio está previsto como sitio Astro estático. No se debe desplegar durante la etapa actual ni crear recursos Cloudflare sin autorización.
+El sitio Astro estático ya está publicado mediante Cloudflare Pages. Los despliegues a producción requieren autorización explícita. Una actualización del código no requiere modificar zonas DNS, nameservers ni registros del correo.
+
+## Publicar una actualización
+
+1. Confirmar la autorización de publicación y revisar `git status` y `git diff`.
+2. Usar Node.js `24.21.0` y ejecutar `npm run check`, `SITE_URL=https://www.lagrecaabogados.com.ar npm run build` y `npm run check:links`.
+3. Integrar los cambios aprobados en la rama de producción conectada a Pages y enviarlos al repositorio. Cloudflare Pages compila y publica la nueva versión.
+4. Verificar el estado del despliegue y comprobar el host canónico, `/contacto/`, los enlaces internos y las redirecciones.
 
 ## Dominios confirmados
 
@@ -9,11 +16,13 @@ El sitio está previsto como sitio Astro estático. No se debe desplegar durante
 - Los dominios pueden permanecer registrados en DonWeb. Para usar Redirect Rules en Cloudflare Free, las zonas DNS deben estar delegadas a Cloudflare y los hosts que redirigen deben usar registros proxied.
 - `www` es un hostname dentro de cada dominio; confirmar en el panel del registrador que los dominios base son `lagrecaabogados.com.ar` y `lagrecaabogados.com`.
 
-## Preparación mientras se registra el `.com.ar`
+## DNS y dominios
 
-Se puede agregar `lagrecaabogados.com` a Cloudflare ahora, revisar los registros que Cloudflare importe y guardar los nameservers asignados. Conviene dejar los nameservers de DonWeb sin cambios y mantener apagadas las redirecciones hasta que `lagrecaabogados.com.ar` esté registrado y el destino canónico esté listo. Luego se agrega también el `.com.ar`, se revisan ambas zonas y se delegan los dos dominios desde DonWeb.
+Las zonas `lagrecaabogados.com.ar` y `lagrecaabogados.com` están configuradas en Cloudflare; los dominios siguen registrados en DonWeb. `www.lagrecaabogados.com.ar` es el único host canónico. El `.com.ar` raíz, el `.com` raíz y `www.lagrecaabogados.com` redirigen al host canónico con estado 301 y conservan ruta y query.
 
-## Configuración prevista
+Los registros DNS incluyen la configuración necesaria para el correo. No volver a delegar nameservers ni modificar registros MX o TXT durante una publicación del sitio.
+
+## Configuración de producción
 
 - Preset: Astro.
 - Comando de compilación: `npm run build`.
@@ -21,7 +30,9 @@ Se puede agregar `lagrecaabogados.com` a Cloudflare ahora, revisar los registros
 - Tipo de salida Astro: `static`.
 - No requiere adaptador Cloudflare para una salida estática.
 
-## Procedimiento futuro
+## Configuración inicial completada
+
+Los pasos siguientes documentan la configuración inicial de Pages, dominios y DNS; no son necesarios para publicar una actualización de código.
 
 1. Completar las tareas y verificaciones de la propuesta OpenSpec aprobada, y confirmar que el contenido jurídico conserve `reviewStatus: approved`.
 2. Crear el repositorio de GitHub solo con autorización, incluyendo el lockfile y las especificaciones OpenSpec.
